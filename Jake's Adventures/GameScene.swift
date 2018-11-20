@@ -25,6 +25,7 @@ class GameScene: SKScene {
     // Boolean
     var joystickAction = false
     var rewardIsNotTouched = true
+    var isHit = false
     
     // Meassure
     var knobRadius : CGFloat = 50.0
@@ -32,6 +33,10 @@ class GameScene: SKScene {
     // Score
     let scoreLabel = SKLabelNode()
     var score = 0
+    
+    // Hearts
+    var heartsArray = [SKSpriteNode]()
+    let heartContainer = SKSpriteNode()
     
     // Sprite Engine
 //    var previousTimeInterval : TimeInterval = 0
@@ -55,7 +60,6 @@ class GameScene: SKScene {
         moon = childNode(withName: "moon")
         stars = childNode(withName: "stars")
         
-        
         playerStateMachine = GKStateMachine(states: [
             JumpingState(playerNode: player!),
             WalkingState(playerNode: player!),
@@ -65,6 +69,12 @@ class GameScene: SKScene {
             ])
         
         playerStateMachine.enter(IdleState.self)
+        
+        // Hearts
+        heartContainer.position = CGPoint(x: -300, y: 140)
+        heartContainer.zPosition = 5
+        cameraNode?.addChild(heartContainer)
+        fillHearts(count: 3)
         
         // Timer
         Timer.scheduledTimer(withTimeInterval: 2, repeats: true) {(timer) in
@@ -81,7 +91,7 @@ class GameScene: SKScene {
     }
 }
 
-// Mark: Touches
+// MARK: Touches
 extension GameScene {
     // Touch Began
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -132,7 +142,7 @@ extension GameScene {
     }
 }
 
-// Mark: Action
+// MARK: Action
 extension GameScene {
     func resetKnobPosition() {
         let initialPoint = CGPoint(x: 0, y: 0)
@@ -146,9 +156,50 @@ extension GameScene {
         score += 1
         scoreLabel.text = String(score)
     }
+    
+    func fillHearts(count: Int) {
+        for index in 1...count {
+            let heart = SKSpriteNode(imageNamed: "heart")
+            let xPosition = heart.size.width * CGFloat(index - 1)
+            heart.position = CGPoint(x: xPosition, y: 0)
+            heartsArray.append(heart)
+            heartContainer.addChild(heart)
+        }
+    }
+    
+    func loseHeart() {
+        if isHit {
+            let lastElementIndex = heartsArray.count - 1
+            if heartsArray.indices.contains(lastElementIndex - 1) {
+                let lastHeart = heartsArray[lastElementIndex]
+                lastHeart.removeFromParent()
+                heartsArray.remove(at: lastElementIndex)
+                Timer.scheduledTimer(withTimeInterval: 2, repeats: false) {(timer) in
+                    self.isHit = false
+                }
+            } else {
+                dying()
+            }
+            invincible()
+        }
+    }
+    
+    func invincible() {
+        player?.physicsBody?.categoryBitMask = 0
+        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) {(timer) in
+            self.player?.physicsBody?.categoryBitMask = 2
+        }
+    }
+    
+    func dying() {
+        let dieAction = SKAction.move(to: CGPoint(x: -300, y: 0), duration: 0.1)
+        player?.run(dieAction)
+        self.removeAllActions()
+        fillHearts(count: 3)
+    }
 }
 
-// Mark: Game Loop
+// MARK: Game Loop
 extension GameScene {
     override func update(_ currentTime: TimeInterval) {
 //        let deltaTime = currentTime - previousTimeInterval
@@ -209,7 +260,7 @@ extension GameScene {
     }
 }
 
-// Mark: Collision
+// MARK: Collision
 extension GameScene: SKPhysicsContactDelegate {
     struct Collision {
         enum Masks: Int {
@@ -229,8 +280,10 @@ extension GameScene: SKPhysicsContactDelegate {
         let collision = Collision(masks: (first: contact.bodyA.categoryBitMask, second: contact.bodyB.categoryBitMask))
         
         if collision.matches(.player, .killing) {
-            let die = SKAction.move(to: CGPoint(x: -300, y: -100), duration: 0.0)
-            player?.run(die)
+            isHit = true
+            loseHeart()
+            
+            playerStateMachine.enter(StunnedState.self)
         }
         
         if collision.matches(.player, .ground) {
@@ -265,7 +318,7 @@ extension GameScene: SKPhysicsContactDelegate {
     }
 }
 
-// Mark: Meteor
+// MARK: Meteor
 extension GameScene {
     func spawnMeteor() {
         let node = SKSpriteNode(imageNamed: "meteor")
