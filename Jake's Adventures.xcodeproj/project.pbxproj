@@ -8,20 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		DA1F0DEA219FC34200B15728 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F0DE9219FC34200B15728 /* AppDelegate.swift */; };
-		DA1F0DEC219FC34300B15728 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA1F0DEB219FC34300B15728 /* GameScene.sks */; };
+		DA1F0DEC219FC34300B15728 /* Level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA1F0DEB219FC34300B15728 /* Level1.sks */; };
 		DA1F0DEE219FC34300B15728 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA1F0DED219FC34300B15728 /* Actions.sks */; };
 		DA1F0DF0219FC34300B15728 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F0DEF219FC34300B15728 /* GameScene.swift */; };
 		DA1F0DF2219FC34300B15728 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1F0DF1219FC34300B15728 /* GameViewController.swift */; };
 		DA1F0DF5219FC34300B15728 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA1F0DF3219FC34300B15728 /* Main.storyboard */; };
 		DA1F0DF7219FC35600B15728 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1F0DF6219FC35600B15728 /* Assets.xcassets */; };
 		DA1F0DFA219FC35600B15728 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA1F0DF8219FC35600B15728 /* LaunchScreen.storyboard */; };
+		DA8180AC21A3B8BC00D0FAFB /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA8180AB21A3B8BB00D0FAFB /* GameOverScene.sks */; };
+		DA8180AE21A3B8CD00D0FAFB /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8180AD21A3B8CD00D0FAFB /* GameOverScene.swift */; };
+		DA8180B021A3BC6A00D0FAFB /* Level1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8180AF21A3BC6A00D0FAFB /* Level1.swift */; };
+		DA8180B221A3BED200D0FAFB /* Level2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8180B121A3BED200D0FAFB /* Level2.swift */; };
+		DA8180B421A3BEF100D0FAFB /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA8180B321A3BEF100D0FAFB /* Level2.sks */; };
+		DA8180B621A3C79D00D0FAFB /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8180B521A3C79D00D0FAFB /* Sound.swift */; };
+		DA8180B821A3CA4000D0FAFB /* audio in Resources */ = {isa = PBXBuildFile; fileRef = DA8180A721A3B86100D0FAFB /* audio */; };
 		DAF1301421A3423F0057F148 /* playerStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1301321A3423F0057F148 /* playerStateMachine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DA1F0DE6219FC34200B15728 /* Jake's Adventures.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Jake's Adventures.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA1F0DE9219FC34200B15728 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA1F0DEB219FC34300B15728 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		DA1F0DEB219FC34300B15728 /* Level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level1.sks; sourceTree = "<group>"; };
 		DA1F0DED219FC34300B15728 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		DA1F0DEF219FC34300B15728 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		DA1F0DF1219FC34300B15728 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -29,6 +36,13 @@
 		DA1F0DF6219FC35600B15728 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA1F0DF9219FC35600B15728 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA1F0DFB219FC35600B15728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA8180A721A3B86100D0FAFB /* audio */ = {isa = PBXFileReference; lastKnownFileType = folder; path = audio; sourceTree = "<group>"; };
+		DA8180AB21A3B8BB00D0FAFB /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
+		DA8180AD21A3B8CD00D0FAFB /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
+		DA8180AF21A3BC6A00D0FAFB /* Level1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level1.swift; sourceTree = "<group>"; };
+		DA8180B121A3BED200D0FAFB /* Level2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level2.swift; sourceTree = "<group>"; };
+		DA8180B321A3BEF100D0FAFB /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
+		DA8180B521A3C79D00D0FAFB /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		DAF1301321A3423F0057F148 /* playerStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = playerStateMachine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -62,16 +76,23 @@
 		DA1F0DE8219FC34200B15728 /* Jake's Adventures */ = {
 			isa = PBXGroup;
 			children = (
-				DA1F0DE9219FC34200B15728 /* AppDelegate.swift */,
-				DA1F0DEB219FC34300B15728 /* GameScene.sks */,
-				DA1F0DED219FC34300B15728 /* Actions.sks */,
 				DA1F0DEF219FC34300B15728 /* GameScene.swift */,
-				DA1F0DF1219FC34300B15728 /* GameViewController.swift */,
+				DA8180B521A3C79D00D0FAFB /* Sound.swift */,
+				DA8180AF21A3BC6A00D0FAFB /* Level1.swift */,
+				DA1F0DEB219FC34300B15728 /* Level1.sks */,
+				DA8180B121A3BED200D0FAFB /* Level2.swift */,
+				DA8180B321A3BEF100D0FAFB /* Level2.sks */,
+				DA8180AD21A3B8CD00D0FAFB /* GameOverScene.swift */,
+				DA8180AB21A3B8BB00D0FAFB /* GameOverScene.sks */,
 				DAF1301321A3423F0057F148 /* playerStateMachine.swift */,
+				DA1F0DF1219FC34300B15728 /* GameViewController.swift */,
 				DA1F0DF3219FC34300B15728 /* Main.storyboard */,
+				DA1F0DE9219FC34200B15728 /* AppDelegate.swift */,
+				DA1F0DED219FC34300B15728 /* Actions.sks */,
 				DA1F0DF6219FC35600B15728 /* Assets.xcassets */,
 				DA1F0DF8219FC35600B15728 /* LaunchScreen.storyboard */,
 				DA1F0DFB219FC35600B15728 /* Info.plist */,
+				DA8180A721A3B86100D0FAFB /* audio */,
 			);
 			path = "Jake's Adventures";
 			sourceTree = "<group>";
@@ -135,10 +156,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA1F0DF5219FC34300B15728 /* Main.storyboard in Resources */,
-				DA1F0DEC219FC34300B15728 /* GameScene.sks in Resources */,
+				DA8180AC21A3B8BC00D0FAFB /* GameOverScene.sks in Resources */,
+				DA1F0DEC219FC34300B15728 /* Level1.sks in Resources */,
+				DA8180B421A3BEF100D0FAFB /* Level2.sks in Resources */,
 				DA1F0DF7219FC35600B15728 /* Assets.xcassets in Resources */,
 				DA1F0DFA219FC35600B15728 /* LaunchScreen.storyboard in Resources */,
 				DA1F0DEE219FC34300B15728 /* Actions.sks in Resources */,
+				DA8180B821A3CA4000D0FAFB /* audio in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,10 +173,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA8180B021A3BC6A00D0FAFB /* Level1.swift in Sources */,
 				DA1F0DF0219FC34300B15728 /* GameScene.swift in Sources */,
 				DA1F0DF2219FC34300B15728 /* GameViewController.swift in Sources */,
 				DAF1301421A3423F0057F148 /* playerStateMachine.swift in Sources */,
+				DA8180AE21A3B8CD00D0FAFB /* GameOverScene.swift in Sources */,
+				DA8180B221A3BED200D0FAFB /* Level2.swift in Sources */,
 				DA1F0DEA219FC34200B15728 /* AppDelegate.swift in Sources */,
+				DA8180B621A3C79D00D0FAFB /* Sound.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
