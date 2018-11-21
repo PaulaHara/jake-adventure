@@ -8,12 +8,21 @@
 
 import Foundation
 import SpriteKit
-
+import AVFoundation
+  
 enum Sound: String {
-    case hit, jump, levelUp, meteorFalling, reward
+    case hit, jump, levelUp, meteorFalling, reward, background
     
     var action: SKAction {
         return SKAction.playSoundFileNamed(rawValue + "Sound.wav", waitForCompletion: false)
+    }
+    
+    var audioPlayer: AVAudioPlayer? {
+        if let path = Bundle.main.path(forResource: "backgroundSound", ofType: ".wav") {
+            let url = URL(fileURLWithPath: path)
+            return try! AVAudioPlayer(contentsOf: url)
+        }
+        return nil
     }
 }
 

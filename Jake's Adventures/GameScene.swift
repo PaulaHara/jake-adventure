@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene: SKScene {
     
@@ -39,19 +40,21 @@ class GameScene: SKScene {
     let heartContainer = SKSpriteNode()
     
     // Sprite Engine
-//    var previousTimeInterval : TimeInterval = 0
     var playerIsFacingRight = true
     var playerSpeed = 1.0
     
     // Player state
     var playerStateMachine: GKStateMachine!
     
-    // didmove
+    // DidMove
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
-        let soundAction = SKAction.repeatForever(SKAction.playSoundFileNamed("music.wav", waitForCompletion: false))
-        run(soundAction)
+//        let soundAction = SKAction.repeatForever(SKAction.playSoundFileNamed("Game-Menu-Music.mp3", waitForCompletion: false))
+//        run(soundAction)
+        if let backgroundMusic: AVAudioPlayer = Sound.background.audioPlayer {
+            backgroundMusic.play()
+        }
         
         player = childNode(withName: "player")
         joystick = childNode(withName: "joystick")
@@ -212,9 +215,6 @@ extension GameScene {
 // MARK: Game Loop
 extension GameScene {
     override func update(_ currentTime: TimeInterval) {
-//        let deltaTime = currentTime - previousTimeInterval
-//        previousTimeInterval = currentTime
-        
         rewardIsNotTouched = true
         
         // Camera
