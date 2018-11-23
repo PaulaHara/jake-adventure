@@ -8,8 +8,10 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class Level1: GameScene {
+    
     override func didMove(to view: SKView) {
         super.didMove(to: view)
     }
@@ -29,7 +31,9 @@ class Level1: GameScene {
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
         if score >= 1 {
-            let nextLevel = GameScene(fileNamed: "Level2")
+            self.bgSoundPlayer?.stop()
+            
+            let nextLevel = Level2(fileNamed: "Level2")
             nextLevel?.scaleMode = .aspectFill
             view?.presentScene(nextLevel)
             run(Sound.levelUp.action)

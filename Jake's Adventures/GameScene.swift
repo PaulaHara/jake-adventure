@@ -46,15 +46,17 @@ class GameScene: SKScene {
     // Player state
     var playerStateMachine: GKStateMachine!
     
+    var bgSoundPlayer:AVAudioPlayer? //add this
+    
     // DidMove
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
         
-//        let soundAction = SKAction.repeatForever(SKAction.playSoundFileNamed("Game-Menu-Music.mp3", waitForCompletion: false))
-//        run(soundAction)
-        if let backgroundMusic: AVAudioPlayer = Sound.background.audioPlayer {
-            backgroundMusic.play()
-        }
+        // Play background music
+        bgSoundPlayer = AVAudioPlayer.backgroundMusic
+        bgSoundPlayer!.numberOfLoops = -1 // loop forever
+        //bgSoundPlayer!.prepareToPlay() //prepare for playback by preloading its buffers.
+        bgSoundPlayer!.play() //actually play
         
         player = childNode(withName: "player")
         joystick = childNode(withName: "joystick")
@@ -207,6 +209,8 @@ extension GameScene {
     }
     
     func showDieScene() {
+        bgSoundPlayer?.stop()
+        
         let gameOverScene = GameOverScene(fileNamed: "GameOverScene")
         self.view?.presentScene(gameOverScene)
     }

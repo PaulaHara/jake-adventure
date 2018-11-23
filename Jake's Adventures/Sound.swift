@@ -11,21 +11,23 @@ import SpriteKit
 import AVFoundation
   
 enum Sound: String {
-    case hit, jump, levelUp, meteorFalling, reward, background
+    case hit, jump, levelUp, meteorFalling, reward
     
     var action: SKAction {
         return SKAction.playSoundFileNamed(rawValue + "Sound.wav", waitForCompletion: false)
     }
-    
-    var audioPlayer: AVAudioPlayer? {
-        if let path = Bundle.main.path(forResource: "backgroundSound", ofType: ".wav") {
-            let url = URL(fileURLWithPath: path)
-            return try! AVAudioPlayer(contentsOf: url)
-        }
-        return nil
-    }
 }
 
-extension SKAction {
-    static let playGameMusic: SKAction = repeatForever(playSoundFileNamed("music.wav", waitForCompletion: false))
+extension AVAudioPlayer {
+    static var backgroundMusic: AVAudioPlayer? {
+        //create a URL variable using the name variable and tacking on the "wav" extension
+        let fileURL: URL = Bundle.main.url(forResource:"music", withExtension: "wav")!
+        
+        //Try to initialize the bgSoundPlayer with the contents of the URL
+        do {
+            return try AVAudioPlayer(contentsOf: fileURL)
+        } catch _{
+            return nil
+        }
+    }
 }
