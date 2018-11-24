@@ -28,6 +28,7 @@
 		DA8E6D1621A7AD1800628CE6 /* music.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0F21A7AD1800628CE6 /* music.wav */; };
 		DA8E6D1721A7AD1800628CE6 /* jumpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D1021A7AD1800628CE6 /* jumpSound.wav */; };
 		DAF1301421A3423F0057F148 /* PlayerStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */; };
+		DAF2F95021A8F5FB00429A5F /* Cenarios sem alfa in Resources */ = {isa = PBXBuildFile; fileRef = DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		DA8E6D0F21A7AD1800628CE6 /* music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music.wav; sourceTree = "<group>"; };
 		DA8E6D1021A7AD1800628CE6 /* jumpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jumpSound.wav; sourceTree = "<group>"; };
 		DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateMachine.swift; sourceTree = "<group>"; };
+		DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Cenarios sem alfa"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				DA8E6D0C21A7AD1700628CE6 /* meteorFallingSound.wav */,
 				DA8E6D0F21A7AD1800628CE6 /* music.wav */,
 				DA8E6D0D21A7AD1700628CE6 /* rewardSound.wav */,
+				DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */,
 			);
 			path = "Jake's Adventures";
 			sourceTree = "<group>";
@@ -175,6 +178,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAF2F95021A8F5FB00429A5F /* Cenarios sem alfa in Resources */,
 				DA8E6D1721A7AD1800628CE6 /* jumpSound.wav in Resources */,
 				DA1F0DF5219FC34300B15728 /* Main.storyboard in Resources */,
 				DA8180AC21A3B8BC00D0FAFB /* GameOverScene.sks in Resources */,

@@ -20,13 +20,11 @@ enum Sound: String {
 
 extension AVAudioPlayer {
     static var backgroundMusic: AVAudioPlayer? {
-        //create a URL variable using the name variable and tacking on the "wav" extension
         let fileURL: URL = Bundle.main.url(forResource:"music", withExtension: "wav")!
         
-        //Try to initialize the bgSoundPlayer with the contents of the URL
         do {
             return try AVAudioPlayer(contentsOf: fileURL)
-        } catch _{
+        } catch {
             return nil
         }
     }

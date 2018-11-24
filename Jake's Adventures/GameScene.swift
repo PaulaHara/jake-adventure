@@ -22,6 +22,8 @@ class GameScene: SKScene {
     var mountain3 : SKNode?
     var moon : SKNode?
     var stars : SKNode?
+    var scenario : SKNode?
+    var backgroundNode : SKNode?
     
     // Boolean
     var joystickAction = false
@@ -55,18 +57,18 @@ class GameScene: SKScene {
         // Play background music
         bgSoundPlayer = AVAudioPlayer.backgroundMusic
         bgSoundPlayer!.numberOfLoops = -1 // loop forever
-        //bgSoundPlayer!.prepareToPlay() //prepare for playback by preloading its buffers.
-        bgSoundPlayer!.play() //actually play
+        bgSoundPlayer!.play() // actually play
         
         player = childNode(withName: "player")
         joystick = childNode(withName: "joystick")
         joystickKnob = joystick?.childNode(withName: "knob")
         cameraNode = childNode(withName: "cameraNode") as? SKCameraNode
-        mountain1 = childNode(withName: "mountain1")
-        mountain2 = childNode(withName: "mountain2")
-        mountain3 = childNode(withName: "mountain3")
+        mountain1 = childNode(withName: "mountains1")
+        mountain2 = childNode(withName: "mountains2")
+        mountain3 = childNode(withName: "mountains3")
         moon = childNode(withName: "moon")
         stars = childNode(withName: "stars")
+        backgroundNode = childNode(withName: "backgroundNode")
         
         playerStateMachine = GKStateMachine(states: [
             JumpingState(playerNode: player!),
@@ -271,6 +273,33 @@ extension GameScene {
         
         let parallax5 = SKAction.moveTo(x: (cameraNode?.position.x)!, duration: 0.0)
         stars?.run(parallax5)
+        
+        print(player?.position.x)
+        // Create new scenario
+//        if (player?.position.x)!.truncatingRemainder(dividingBy: CGFloat(400)) == 0 {
+         if (player?.position.x)! - CGFloat(212) >= 400 {
+            scenario = SKSpriteNode(imageNamed: "scenario/1")
+            scenario?.position.x = (player?.position.x)! + CGFloat(412)
+            scenario?.position.y = -145
+            
+            let physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 812, height: 90))
+            scenario?.physicsBody = physicsBody
+            
+            physicsBody.categoryBitMask = Collision.Masks.ground.bitmask
+            physicsBody.collisionBitMask = Collision.Masks.player.bitmask
+            physicsBody.contactTestBitMask = Collision.Masks.player.bitmask
+            physicsBody.fieldBitMask = 0
+            
+            physicsBody.affectedByGravity = false
+            physicsBody.allowsRotation = false
+            physicsBody.restitution = 0.2
+            physicsBody.friction = 0.2
+        }
+        
+        if (player?.position.x)!.truncatingRemainder(dividingBy: CGFloat(900)) == 0 {
+            backgroundNode?.position.x = (player?.position.x)! + CGFloat(380)
+        }
+        
     }
 }
 
