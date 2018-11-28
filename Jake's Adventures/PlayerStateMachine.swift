@@ -59,7 +59,7 @@ class LandingState: PlayerState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        stateMachine?.enter(IdleState.self)
+        stateMachine?.enter(WalkingState.self)
     }
 }
 
@@ -71,7 +71,7 @@ class IdleState: PlayerState {
         }
     }
     
-    let textures = SKTexture(imageNamed: "player/0")
+    let textures = SKTexture(imageNamed: "idle/0")
     lazy var action = {SKAction.animate(with: [textures], timePerFrame: 0.1)} ()
     
     override func didEnter(from previousState: GKState?) {
@@ -88,8 +88,8 @@ class WalkingState: PlayerState {
         }
     }
     
-    let textures: Array<SKTexture> = (0...6).map({ return "player/\($0)"}).map(SKTexture.init)
-    lazy var action = {SKAction.repeatForever(.animate(with: self.textures, timePerFrame: 0.1))} ()
+    let textures: Array<SKTexture> = (0...2).map({ return "running/\($0)"}).map(SKTexture.init)
+    lazy var action = {SKAction.repeatForever(.animate(with: self.textures, timePerFrame: 0.2))} ()
     
     override func didEnter(from previousState: GKState?) {
         playerNode.removeAction(forKey: characterAnimationKey)

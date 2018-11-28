@@ -13,7 +13,7 @@ import AVFoundation
 class GameScene: SKScene {
     
     // Nodes
-    var player : SKNode?
+    var player : SKSpriteNode?
     var joystick : SKNode?
     var joystickKnob : SKNode?
     var cameraNode : SKCameraNode?
@@ -59,11 +59,11 @@ class GameScene: SKScene {
         physicsWorld.contactDelegate = self
         
         // Play background music
-        bgSoundPlayer = AVAudioPlayer.backgroundMusic
-        bgSoundPlayer!.numberOfLoops = -1 // loop forever
-        bgSoundPlayer!.play() // actually play
+//        bgSoundPlayer = AVAudioPlayer.backgroundMusic
+//        bgSoundPlayer!.numberOfLoops = -1 // loop forever
+//        bgSoundPlayer!.play() // actually play
         
-        player = childNode(withName: "player")
+        player = childNode(withName: "player") as? SKSpriteNode
         joystick = childNode(withName: "joystick")
         joystickKnob = joystick?.childNode(withName: "knob")
         cameraNode = childNode(withName: "cameraNode") as? SKCameraNode
