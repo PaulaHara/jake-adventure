@@ -29,6 +29,7 @@
 		DADF1FEA21AE2E6C00C19836 /* levelUpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DADF1FE921AE2E6C00C19836 /* levelUpSound.wav */; };
 		DAF1301421A3423F0057F148 /* PlayerStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */; };
 		DAF2F95021A8F5FB00429A5F /* Cenarios sem alfa in Resources */ = {isa = PBXBuildFile; fileRef = DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */; };
+		DAFA510521AE504A00BB61BC /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA510421AE504A00BB61BC /* Credits.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		DADF1FE921AE2E6C00C19836 /* levelUpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelUpSound.wav; sourceTree = "<group>"; };
 		DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateMachine.swift; sourceTree = "<group>"; };
 		DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Cenarios sem alfa"; sourceTree = "<group>"; };
+		DAFA510421AE504A00BB61BC /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				DA8E6D0F21A7AD1800628CE6 /* music.wav */,
 				DA8E6D0D21A7AD1700628CE6 /* rewardSound.wav */,
 				DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */,
+				DAFA510421AE504A00BB61BC /* Credits.swift */,
 			);
 			path = "Jake's Adventures";
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				DA8180AE21A3B8CD00D0FAFB /* GameOverScene.swift in Sources */,
 				DA8180B221A3BED200D0FAFB /* Level2.swift in Sources */,
 				DA1F0DEA219FC34200B15728 /* AppDelegate.swift in Sources */,
+				DAFA510521AE504A00BB61BC /* Credits.swift in Sources */,
 				DA8180B621A3C79D00D0FAFB /* Sound.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

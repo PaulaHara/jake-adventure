@@ -328,6 +328,7 @@ extension GameScene: SKPhysicsContactDelegate {
                 contact.bodyA.node?.removeFromParent()
             } else if contact.bodyB.node?.name == "Jewel" {
                 contact.bodyB.node?.physicsBody?.categoryBitMask = 0
+                contact.bodyB.node?.removeFromParent()
             }
             
             if rewardIsNotTouched {
