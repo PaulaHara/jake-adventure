@@ -30,7 +30,7 @@ class Level1: GameScene {
     
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
-        if score >= 1 {
+        if goToNextLevel {
             self.bgSoundPlayer?.stop()
             
             let nextLevel = Level2(fileNamed: "Level2")

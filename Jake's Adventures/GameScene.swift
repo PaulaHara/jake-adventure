@@ -24,11 +24,15 @@ class GameScene: SKScene {
     var stars : SKNode?
     var scenario : SKNode?
     var backgroundNode : SKNode?
+    var goNextLevel : SKNode?
+    var outOfMap : SKNode?
     
     // Boolean
     var joystickAction = false
     var rewardIsNotTouched = true
     var isHit = false
+    var goToNextLevel = false
+    var isInvicible = false
     
     // Meassure
     var knobRadius : CGFloat = 50.0
@@ -69,6 +73,8 @@ class GameScene: SKScene {
         moon = childNode(withName: "moon")
         stars = childNode(withName: "stars")
         backgroundNode = childNode(withName: "backgroundNode")
+        goNextLevel = childNode(withName: "GoNextLevel")
+        outOfMap = childNode(withName: "killingGround")
         
         playerStateMachine = GKStateMachine(states: [
             JumpingState(playerNode: player!),
@@ -197,10 +203,14 @@ extension GameScene {
     }
     
     func invincible() {
-        player?.physicsBody?.categoryBitMask = 0
+        isInvicible = true
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) {(timer) in
-            self.player?.physicsBody?.categoryBitMask = 2
+            self.isInvicible = false
         }
+//        player?.physicsBody?.categoryBitMask = 0
+//        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) {(timer) in
+//            self.player?.physicsBody?.categoryBitMask = 2
+//        }
     }
     
     func dying() {
@@ -272,33 +282,7 @@ extension GameScene {
         moon?.run(parallax4)
         
         let parallax5 = SKAction.moveTo(x: (cameraNode?.position.x)!, duration: 0.0)
-        stars?.run(parallax5)
-        
-        // Create new scenario
-//        if (player?.position.x)!.truncatingRemainder(dividingBy: CGFloat(400)) == 0 {
-         if (player?.position.x)! - CGFloat(212) >= 400 {
-            scenario = SKSpriteNode(imageNamed: "scenario/1")
-            scenario?.position.x = (player?.position.x)! + CGFloat(412)
-            scenario?.position.y = -145
-            
-            let physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 812, height: 90))
-            scenario?.physicsBody = physicsBody
-            
-            physicsBody.categoryBitMask = Collision.Masks.ground.bitmask
-            physicsBody.collisionBitMask = Collision.Masks.player.bitmask
-            physicsBody.contactTestBitMask = Collision.Masks.player.bitmask
-            physicsBody.fieldBitMask = 0
-            
-            physicsBody.affectedByGravity = false
-            physicsBody.allowsRotation = false
-            physicsBody.restitution = 0.2
-            physicsBody.friction = 0.2
-        }
-        
-        if (player?.position.x)!.truncatingRemainder(dividingBy: CGFloat(900)) == 0 {
-            backgroundNode?.position.x = (player?.position.x)! + CGFloat(380)
-        }
-        
+        stars?.run(parallax5)        
     }
 }
 
@@ -306,8 +290,10 @@ extension GameScene {
 extension GameScene: SKPhysicsContactDelegate {
     struct Collision {
         enum Masks: Int {
-            case killing, player, reward, ground
-            var bitmask: UInt32 { return 1 << self.rawValue }
+            case killing, player, reward, ground, nextLevel, outOfMap
+            var bitmask: UInt32 {
+                return 1 << self.rawValue
+            }
         }
         
         let masks: (first: UInt32, second: UInt32)
@@ -320,14 +306,16 @@ extension GameScene: SKPhysicsContactDelegate {
     
     func didBegin(_ contact: SKPhysicsContact) {
         let collision = Collision(masks: (first: contact.bodyA.categoryBitMask, second: contact.bodyB.categoryBitMask))
-        
+
         if collision.matches(.player, .killing) {
-            isHit = true
-            loseHeart()
-            
-            run(Sound.hit.action)
-            
-            playerStateMachine.enter(StunnedState.self)
+            if !isInvicible {
+                isHit = true
+                loseHeart()
+                 
+                run(Sound.hit.action)
+                
+                playerStateMachine.enter(StunnedState.self)
+            }
         }
         
         if collision.matches(.player, .ground) {
@@ -350,16 +338,28 @@ extension GameScene: SKPhysicsContactDelegate {
         }
         
         if collision.matches(.ground, .killing) {
-            if contact.bodyA.node?.name == "Meteor", let meteor = contact.bodyA.node {
-                createMolten(at: meteor.position)
-                meteor.removeFromParent()
-            }
-            
-            if contact.bodyB.node?.name == "Meteor", let meteor = contact.bodyB.node {
-                createMolten(at: meteor.position)
-                meteor.removeFromParent()
+            if !isInvicible {
+                if contact.bodyA.node?.name == "Meteor", let meteor = contact.bodyA.node {
+                    createMolten(at: meteor.position)
+                    meteor.removeFromParent()
+                }
+                
+                if contact.bodyB.node?.name == "Meteor", let meteor = contact.bodyB.node {
+                    createMolten(at: meteor.position)
+                    meteor.removeFromParent()
+                }
             }
             run(Sound.meteorFalling.action)
+        }
+        
+        if collision.matches(.player, .nextLevel) {
+            if contact.bodyA.node?.name == "GoNextLevel" || contact.bodyB.node?.name == "GoNextLevel"{
+                goToNextLevel = true
+            }
+        }
+        
+        if collision.matches(.player, .outOfMap) || collision.matches(.player, .outOfMap) {
+            showDieScene()
         }
     }
 }
