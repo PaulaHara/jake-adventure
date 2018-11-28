@@ -274,7 +274,6 @@ extension GameScene {
         let parallax5 = SKAction.moveTo(x: (cameraNode?.position.x)!, duration: 0.0)
         stars?.run(parallax5)
         
-        print(player?.position.x)
         // Create new scenario
 //        if (player?.position.x)!.truncatingRemainder(dividingBy: CGFloat(400)) == 0 {
          if (player?.position.x)! - CGFloat(212) >= 400 {

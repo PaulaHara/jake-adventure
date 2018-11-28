@@ -21,12 +21,12 @@
 		DA8180B221A3BED200D0FAFB /* Level2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8180B121A3BED200D0FAFB /* Level2.swift */; };
 		DA8180B421A3BEF100D0FAFB /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA8180B321A3BEF100D0FAFB /* Level2.sks */; };
 		DA8180B621A3C79D00D0FAFB /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8180B521A3C79D00D0FAFB /* Sound.swift */; };
-		DA8E6D1221A7AD1800628CE6 /* levelUpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0B21A7AD1700628CE6 /* levelUpSound.wav */; };
 		DA8E6D1321A7AD1800628CE6 /* meteorFallingSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0C21A7AD1700628CE6 /* meteorFallingSound.wav */; };
 		DA8E6D1421A7AD1800628CE6 /* rewardSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0D21A7AD1700628CE6 /* rewardSound.wav */; };
 		DA8E6D1521A7AD1800628CE6 /* hitSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0E21A7AD1700628CE6 /* hitSound.wav */; };
 		DA8E6D1621A7AD1800628CE6 /* music.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0F21A7AD1800628CE6 /* music.wav */; };
 		DA8E6D1721A7AD1800628CE6 /* jumpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D1021A7AD1800628CE6 /* jumpSound.wav */; };
+		DAA9A95321AD0497003B0B4D /* levelUpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A95221AD0497003B0B4D /* levelUpSound.wav */; };
 		DAF1301421A3423F0057F148 /* PlayerStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */; };
 		DAF2F95021A8F5FB00429A5F /* Cenarios sem alfa in Resources */ = {isa = PBXBuildFile; fileRef = DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */; };
 /* End PBXBuildFile section */
@@ -48,12 +48,12 @@
 		DA8180B121A3BED200D0FAFB /* Level2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level2.swift; sourceTree = "<group>"; };
 		DA8180B321A3BEF100D0FAFB /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
 		DA8180B521A3C79D00D0FAFB /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
-		DA8E6D0B21A7AD1700628CE6 /* levelUpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = levelUpSound.wav; path = "../../../../Downloads/Assets @1x Part2/audio/levelUpSound.wav"; sourceTree = "<group>"; };
 		DA8E6D0C21A7AD1700628CE6 /* meteorFallingSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meteorFallingSound.wav; sourceTree = "<group>"; };
 		DA8E6D0D21A7AD1700628CE6 /* rewardSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rewardSound.wav; sourceTree = "<group>"; };
 		DA8E6D0E21A7AD1700628CE6 /* hitSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitSound.wav; sourceTree = "<group>"; };
 		DA8E6D0F21A7AD1800628CE6 /* music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music.wav; sourceTree = "<group>"; };
 		DA8E6D1021A7AD1800628CE6 /* jumpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jumpSound.wav; sourceTree = "<group>"; };
+		DAA9A95221AD0497003B0B4D /* levelUpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = levelUpSound.wav; path = "../../../../../Downloads/jake-adventure-master/Jake's Adventures/levelUpSound.wav"; sourceTree = "<group>"; };
 		DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateMachine.swift; sourceTree = "<group>"; };
 		DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Cenarios sem alfa"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,7 +106,7 @@
 				DA1F0DFB219FC35600B15728 /* Info.plist */,
 				DA8E6D0E21A7AD1700628CE6 /* hitSound.wav */,
 				DA8E6D1021A7AD1800628CE6 /* jumpSound.wav */,
-				DA8E6D0B21A7AD1700628CE6 /* levelUpSound.wav */,
+				DAA9A95221AD0497003B0B4D /* levelUpSound.wav */,
 				DA8E6D0C21A7AD1700628CE6 /* meteorFallingSound.wav */,
 				DA8E6D0F21A7AD1800628CE6 /* music.wav */,
 				DA8E6D0D21A7AD1700628CE6 /* rewardSound.wav */,
@@ -188,7 +188,7 @@
 				DA8E6D1321A7AD1800628CE6 /* meteorFallingSound.wav in Resources */,
 				DA8E6D1421A7AD1800628CE6 /* rewardSound.wav in Resources */,
 				DA1F0DFA219FC35600B15728 /* LaunchScreen.storyboard in Resources */,
-				DA8E6D1221A7AD1800628CE6 /* levelUpSound.wav in Resources */,
+				DAA9A95321AD0497003B0B4D /* levelUpSound.wav in Resources */,
 				DA8E6D1521A7AD1800628CE6 /* hitSound.wav in Resources */,
 				DA1F0DEE219FC34300B15728 /* Actions.sks in Resources */,
 				DA8E6D1621A7AD1800628CE6 /* music.wav in Resources */,
