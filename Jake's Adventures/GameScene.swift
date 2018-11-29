@@ -13,7 +13,7 @@ import AVFoundation
 class GameScene: SKScene {
     
     // Nodes
-    var player : SKSpriteNode?
+    var player : SKNode?
     var joystick : SKNode?
     var joystickKnob : SKNode?
     var cameraNode : SKCameraNode?
@@ -26,6 +26,7 @@ class GameScene: SKScene {
     var backgroundNode : SKNode?
     var goNextLevel : SKNode?
     var outOfMap : SKNode?
+    var flyMan : SKNode?
     
     // Boolean
     var joystickAction = false
@@ -75,6 +76,15 @@ class GameScene: SKScene {
         backgroundNode = childNode(withName: "backgroundNode")
         goNextLevel = childNode(withName: "GoNextLevel")
         outOfMap = childNode(withName: "killingGround")
+        flyMan = childNode(withName: "enemies")
+        
+        // Animate flyMan
+        let y: CGFloat = (flyMan?.position.y)!;
+        let a = SKAction.moveTo(y: y+40, duration:2.0);
+        let b = SKAction.moveTo(y: y, duration:2.0);
+        let c = SKAction.sequence([a, b]);
+        let d = SKAction.repeatForever(c)
+        flyMan?.run(d)
         
         playerStateMachine = GKStateMachine(states: [
             JumpingState(playerNode: player!),
@@ -257,11 +267,11 @@ extension GameScene {
         
         if movingLeft && playerIsFacingRight {
             playerIsFacingRight = false
-            let faceMovement = SKAction.scaleX(to: -1, duration: 0.0)
+            let faceMovement = SKAction.scaleX(to: -0.5, duration: 0.0)
             faceAction = SKAction.sequence([move, faceMovement])
         } else if movingRight && !playerIsFacingRight {
             playerIsFacingRight = true
-            let faceMovement = SKAction.scaleX(to: 1, duration: 0.0)
+            let faceMovement = SKAction.scaleX(to: 0.5, duration: 0.0)
             faceAction = SKAction.sequence([move, faceMovement])
         } else {
             faceAction = move

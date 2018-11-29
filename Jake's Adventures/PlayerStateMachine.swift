@@ -36,13 +36,13 @@ class JumpingState: PlayerState {
     }
     
     let textures: Array<SKTexture> = (0...1).map({return "jump/\($0)"}).map(SKTexture.init)
-    lazy var action = {SKAction.animate(with: textures, timePerFrame: 0.1)} ()
+    lazy var action = {SKAction.animate(with: textures, timePerFrame: 0.2)} ()
     
     override func didEnter(from previousState: GKState?) {
         playerNode.removeAction(forKey: characterAnimationKey)
         playerNode.run(action, withKey: characterAnimationKey)
         hasFinishedJumping = false
-        playerNode.run(.applyForce(CGVector(dx: 0, dy: 180), duration: 0.4))
+        playerNode.run(.applyForce(CGVector(dx: 0, dy: 200), duration: 0.2))
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) {(timer) in
             self.hasFinishedJumping = true
@@ -106,7 +106,7 @@ class StunnedState: PlayerState {
         }
         
         switch stateClass {
-        case is IdleState.Type:
+        case is WalkingState.Type:
             return true
         default:
             return false
@@ -125,7 +125,7 @@ class StunnedState: PlayerState {
         playerNode.run(action)
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
             self.isStunned = false
-            self.stateMachine?.enter(IdleState.self)
+            self.stateMachine?.enter(WalkingState.self)
         }
     }
 }
