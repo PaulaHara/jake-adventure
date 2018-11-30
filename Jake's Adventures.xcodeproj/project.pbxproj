@@ -15,6 +15,7 @@
 		DA1F0DF5219FC34300B15728 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA1F0DF3219FC34300B15728 /* Main.storyboard */; };
 		DA1F0DF7219FC35600B15728 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA1F0DF6219FC35600B15728 /* Assets.xcassets */; };
 		DA1F0DFA219FC35600B15728 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA1F0DF8219FC35600B15728 /* LaunchScreen.storyboard */; };
+		DA2C73A321B0F5E60083F2A6 /* music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA2C73A221B0F5E60083F2A6 /* music.mp3 */; };
 		DA8180AC21A3B8BC00D0FAFB /* GameOverScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA8180AB21A3B8BB00D0FAFB /* GameOverScene.sks */; };
 		DA8180AE21A3B8CD00D0FAFB /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8180AD21A3B8CD00D0FAFB /* GameOverScene.swift */; };
 		DA8180B021A3BC6A00D0FAFB /* Level1.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8180AF21A3BC6A00D0FAFB /* Level1.swift */; };
@@ -28,6 +29,8 @@
 		DA8E6D1721A7AD1800628CE6 /* jumpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D1021A7AD1800628CE6 /* jumpSound.wav */; };
 		DADF1FEA21AE2E6C00C19836 /* levelUpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DADF1FE921AE2E6C00C19836 /* levelUpSound.wav */; };
 		DAF1301421A3423F0057F148 /* PlayerStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */; };
+		DAF2418E21B0CFE80020BBCC /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DAF2418D21B0CFE80020BBCC /* MenuScene.sks */; };
+		DAF2419021B0CFF50020BBCC /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2418F21B0CFF50020BBCC /* MenuScene.swift */; };
 		DAF2F95021A8F5FB00429A5F /* Cenarios sem alfa in Resources */ = {isa = PBXBuildFile; fileRef = DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */; };
 		DAFA510521AE504A00BB61BC /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFA510421AE504A00BB61BC /* Credits.swift */; };
 /* End PBXBuildFile section */
@@ -43,6 +46,7 @@
 		DA1F0DF6219FC35600B15728 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA1F0DF9219FC35600B15728 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA1F0DFB219FC35600B15728 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA2C73A221B0F5E60083F2A6 /* music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = music.mp3; sourceTree = "<group>"; };
 		DA8180AB21A3B8BB00D0FAFB /* GameOverScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameOverScene.sks; sourceTree = "<group>"; };
 		DA8180AD21A3B8CD00D0FAFB /* GameOverScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		DA8180AF21A3BC6A00D0FAFB /* Level1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level1.swift; sourceTree = "<group>"; };
@@ -56,6 +60,8 @@
 		DA8E6D1021A7AD1800628CE6 /* jumpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jumpSound.wav; sourceTree = "<group>"; };
 		DADF1FE921AE2E6C00C19836 /* levelUpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelUpSound.wav; sourceTree = "<group>"; };
 		DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateMachine.swift; sourceTree = "<group>"; };
+		DAF2418D21B0CFE80020BBCC /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
+		DAF2418F21B0CFF50020BBCC /* MenuScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
 		DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Cenarios sem alfa"; sourceTree = "<group>"; };
 		DAFA510421AE504A00BB61BC /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +102,8 @@
 				DA1F0DEB219FC34300B15728 /* Level1.sks */,
 				DA8180B121A3BED200D0FAFB /* Level2.swift */,
 				DA8180B321A3BEF100D0FAFB /* Level2.sks */,
+				DAF2418F21B0CFF50020BBCC /* MenuScene.swift */,
+				DAF2418D21B0CFE80020BBCC /* MenuScene.sks */,
 				DA8180AD21A3B8CD00D0FAFB /* GameOverScene.swift */,
 				DA8180AB21A3B8BB00D0FAFB /* GameOverScene.sks */,
 				DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */,
@@ -112,6 +120,7 @@
 				DA8E6D0C21A7AD1700628CE6 /* meteorFallingSound.wav */,
 				DA8E6D0F21A7AD1800628CE6 /* music.wav */,
 				DA8E6D0D21A7AD1700628CE6 /* rewardSound.wav */,
+				DA2C73A221B0F5E60083F2A6 /* music.mp3 */,
 				DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */,
 				DAFA510421AE504A00BB61BC /* Credits.swift */,
 			);
@@ -187,6 +196,7 @@
 				DA1F0DF5219FC34300B15728 /* Main.storyboard in Resources */,
 				DA8180AC21A3B8BC00D0FAFB /* GameOverScene.sks in Resources */,
 				DA1F0DEC219FC34300B15728 /* Level1.sks in Resources */,
+				DA2C73A321B0F5E60083F2A6 /* music.mp3 in Resources */,
 				DA8180B421A3BEF100D0FAFB /* Level2.sks in Resources */,
 				DA1F0DF7219FC35600B15728 /* Assets.xcassets in Resources */,
 				DA8E6D1321A7AD1800628CE6 /* meteorFallingSound.wav in Resources */,
@@ -194,6 +204,7 @@
 				DA1F0DFA219FC35600B15728 /* LaunchScreen.storyboard in Resources */,
 				DA8E6D1521A7AD1800628CE6 /* hitSound.wav in Resources */,
 				DA1F0DEE219FC34300B15728 /* Actions.sks in Resources */,
+				DAF2418E21B0CFE80020BBCC /* MenuScene.sks in Resources */,
 				DA8E6D1621A7AD1800628CE6 /* music.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,6 +223,7 @@
 				DA8180AE21A3B8CD00D0FAFB /* GameOverScene.swift in Sources */,
 				DA8180B221A3BED200D0FAFB /* Level2.swift in Sources */,
 				DA1F0DEA219FC34200B15728 /* AppDelegate.swift in Sources */,
+				DAF2419021B0CFF50020BBCC /* MenuScene.swift in Sources */,
 				DAFA510521AE504A00BB61BC /* Credits.swift in Sources */,
 				DA8180B621A3C79D00D0FAFB /* Sound.swift in Sources */,
 			);

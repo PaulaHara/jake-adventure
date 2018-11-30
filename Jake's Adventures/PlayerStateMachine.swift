@@ -59,7 +59,7 @@ class LandingState: PlayerState {
     }
     
     override func didEnter(from previousState: GKState?) {
-        stateMachine?.enter(WalkingState.self)
+        stateMachine?.enter(IdleState.self)
     }
 }
 
@@ -71,8 +71,8 @@ class IdleState: PlayerState {
         }
     }
     
-    let textures = SKTexture(imageNamed: "idle/0")
-    lazy var action = {SKAction.animate(with: [textures], timePerFrame: 0.1)} ()
+    let textures: Array<SKTexture> = (0...2).map({return "idle/\($0)"}).map(SKTexture.init)
+    lazy var action = {SKAction.repeatForever(.animate(with: textures, timePerFrame: 0.3))} ()
     
     override func didEnter(from previousState: GKState?) {
         playerNode.removeAction(forKey: characterAnimationKey)
@@ -106,7 +106,7 @@ class StunnedState: PlayerState {
         }
         
         switch stateClass {
-        case is WalkingState.Type:
+        case is IdleState.Type:
             return true
         default:
             return false
@@ -125,7 +125,7 @@ class StunnedState: PlayerState {
         playerNode.run(action)
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { (timer) in
             self.isStunned = false
-            self.stateMachine?.enter(WalkingState.self)
+            self.stateMachine?.enter(IdleState.self)
         }
     }
 }

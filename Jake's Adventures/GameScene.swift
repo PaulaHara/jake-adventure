@@ -34,6 +34,7 @@ class GameScene: SKScene {
     var isHit = false
     var goToNextLevel = false
     var isInvicible = false
+    var carrotIsNotTouched = false
     
     // Meassure
     var knobRadius : CGFloat = 50.0
@@ -60,9 +61,10 @@ class GameScene: SKScene {
         physicsWorld.contactDelegate = self
         
         // Play background music
-//        bgSoundPlayer = AVAudioPlayer.backgroundMusic
-//        bgSoundPlayer!.numberOfLoops = -1 // loop forever
-//        bgSoundPlayer!.play() // actually play
+        bgSoundPlayer = AVAudioPlayer.backgroundMusic
+        bgSoundPlayer?.volume = 0.5
+        bgSoundPlayer!.numberOfLoops = -1 // loop forever
+        bgSoundPlayer!.play() // actually play
         
         player = childNode(withName: "player") as? SKSpriteNode
         joystick = childNode(withName: "joystick")
@@ -80,8 +82,8 @@ class GameScene: SKScene {
         
         // Animate flyMan
         let y: CGFloat = (flyMan?.position.y)!;
-        let a = SKAction.moveTo(y: y+40, duration:2.0);
-        let b = SKAction.moveTo(y: y, duration:2.0);
+        let a = SKAction.moveTo(y: y+50, duration:2.0);
+        let b = SKAction.moveTo(y: y-20, duration:2.0);
         let c = SKAction.sequence([a, b]);
         let d = SKAction.repeatForever(c)
         flyMan?.run(d)
@@ -103,7 +105,7 @@ class GameScene: SKScene {
         fillHearts(count: 3)
         
         // Timer
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: true) {(timer) in
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) {(timer) in
             self.spawnMeteor()
         }
         
@@ -184,13 +186,17 @@ extension GameScene {
         scoreLabel.text = String(score)
     }
     
+    fileprivate func addHeart(_ index: Int) {
+        let heart = SKSpriteNode(imageNamed: "heart")
+        let xPosition = heart.size.width * CGFloat(index - 1)
+        heart.position = CGPoint(x: xPosition, y: 0)
+        heartsArray.append(heart)
+        heartContainer.addChild(heart)
+    }
+    
     func fillHearts(count: Int) {
         for index in 1...count {
-            let heart = SKSpriteNode(imageNamed: "heart")
-            let xPosition = heart.size.width * CGFloat(index - 1)
-            heart.position = CGPoint(x: xPosition, y: 0)
-            heartsArray.append(heart)
-            heartContainer.addChild(heart)
+            addHeart(index)
         }
     }
     
@@ -212,15 +218,18 @@ extension GameScene {
         }
     }
     
+    func receiveHeart() {
+        let lastElementIndex = heartsArray.count
+        if heartsArray.count < 3 {
+            addHeart(lastElementIndex + 1)
+        }
+    }
+    
     func invincible() {
         isInvicible = true
         Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) {(timer) in
             self.isInvicible = false
         }
-//        player?.physicsBody?.categoryBitMask = 0
-//        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) {(timer) in
-//            self.player?.physicsBody?.categoryBitMask = 2
-//        }
     }
     
     func dying() {
@@ -242,9 +251,10 @@ extension GameScene {
 extension GameScene {
     override func update(_ currentTime: TimeInterval) {
         rewardIsNotTouched = true
+        carrotIsNotTouched = true
         
         // Camera
-        cameraNode?.position.x = player!.position.x
+        cameraNode?.position.x = player!.position.x + 50
         joystick?.position.y = (cameraNode?.position.y)! - 100
         joystick?.position.x = (cameraNode?.position.x)! - 300
 
@@ -321,6 +331,15 @@ extension GameScene: SKPhysicsContactDelegate {
             if !isInvicible {
                 isHit = true
                 loseHeart()
+                
+                var nodeToRemove = SKNode()
+                if contact.bodyA.node?.name == "spikeBall" {
+                    nodeToRemove = contact.bodyA.node!
+                } else if contact.bodyB.node?.name == "spikeBall" {
+                    nodeToRemove = contact.bodyB.node!
+                }
+                nodeToRemove.physicsBody?.categoryBitMask = 0
+                nodeToRemove.removeFromParent()
                  
                 run(Sound.hit.action)
                 
@@ -333,34 +352,39 @@ extension GameScene: SKPhysicsContactDelegate {
         }
         
         if collision.matches(.player, .reward) {
+            var nodeToRemove = SKNode()
+            var touchedCoin = false
+            var touchedCarrot = false
+            
             if contact.bodyA.node?.name == "Jewel" {
-                contact.bodyA.node?.physicsBody?.categoryBitMask = 0
-                contact.bodyA.node?.removeFromParent()
+                nodeToRemove = contact.bodyA.node!
+                touchedCoin = true
             } else if contact.bodyB.node?.name == "Jewel" {
-                contact.bodyB.node?.physicsBody?.categoryBitMask = 0
-                contact.bodyB.node?.removeFromParent()
+                nodeToRemove = contact.bodyB.node!
+                touchedCoin = true
             }
             
+            if contact.bodyA.node?.name == "carrot" {
+                nodeToRemove = contact.bodyA.node!
+                touchedCarrot = true
+            } else if contact.bodyB.node?.name == "carrot" {
+                nodeToRemove = contact.bodyB.node!
+                touchedCarrot = true
+            }
+            
+            nodeToRemove.physicsBody?.categoryBitMask = 0
+            nodeToRemove.removeFromParent()
+            
             if rewardIsNotTouched {
-                rewardTouch()
+                if touchedCoin {
+                    rewardTouch()
+                }
+                if touchedCarrot{
+                    receiveHeart()
+                }
                 rewardIsNotTouched = false
             }
             run(Sound.reward.action)
-        }
-        
-        if collision.matches(.ground, .killing) {
-            if !isInvicible {
-                if contact.bodyA.node?.name == "Meteor", let meteor = contact.bodyA.node {
-                    createMolten(at: meteor.position)
-                    meteor.removeFromParent()
-                }
-                
-                if contact.bodyB.node?.name == "Meteor", let meteor = contact.bodyB.node {
-                    createMolten(at: meteor.position)
-                    meteor.removeFromParent()
-                }
-            }
-            run(Sound.meteorFalling.action)
         }
         
         if collision.matches(.player, .nextLevel) {
@@ -378,13 +402,14 @@ extension GameScene: SKPhysicsContactDelegate {
 // MARK: Meteor
 extension GameScene {
     func spawnMeteor() {
-        let node = SKSpriteNode(imageNamed: "meteor")
-        node.name = "Meteor"
-        let randomXPosition = Int(arc4random_uniform(UInt32(self.size.width)))
+        let node = SKSpriteNode(imageNamed: "spikeBall/0")
+        node.name = "spikeBall"
         
-        node.position = CGPoint(x: randomXPosition, y: 270)
+        node.position = CGPoint(x: (player?.position.x)! + 400, y: 10)
         node.anchorPoint = CGPoint(x: 0.5, y: 1)
         node.zPosition = 5
+        node.xScale = 0.3
+        node.yScale = 0.3
         
         let physicsBody = SKPhysicsBody(circleOfRadius: 30)
         node.physicsBody = physicsBody
@@ -394,29 +419,11 @@ extension GameScene {
         physicsBody.contactTestBitMask = Collision.Masks.player.bitmask | Collision.Masks.ground.bitmask
         physicsBody.fieldBitMask = Collision.Masks.player.bitmask | Collision.Masks.ground.bitmask
         
-        physicsBody.affectedByGravity = true
+        physicsBody.affectedByGravity = false
         physicsBody.allowsRotation = false
         physicsBody.restitution = 0.2
         physicsBody.friction = 10
         
         addChild(node)
-    }
-    
-    func createMolten(at position: CGPoint) {
-        let node = SKSpriteNode(imageNamed: "molten")
-        node.position.x = position.x
-        node.position.y = position.y - 110
-        node.zPosition = 4
-        
-        addChild(node)
-        
-        let action = SKAction.sequence([
-            SKAction.fadeIn(withDuration: 0.1),
-            SKAction.wait(forDuration: 3.0),
-            SKAction.fadeOut(withDuration: 0.2),
-            SKAction.removeFromParent(),
-            ])
-        
-        node.run(action)
     }
 }
