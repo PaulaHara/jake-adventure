@@ -30,13 +30,22 @@ class Level1: GameScene {
     
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
+        
         if goToNextLevel {
-            self.bgSoundPlayer?.stop()
+            let action = SKAction.moveTo(x: (player?.position.x)!, duration: 0.0)
+            player?.run(action)
             
-            let nextLevel = Level2(fileNamed: "Level2")
-            nextLevel?.scaleMode = .aspectFill
-            view?.presentScene(nextLevel)
-            run(Sound.levelUp.action)
+            playerStateMachine.enter(JumpingState.self)
+            
+            Timer.scheduledTimer(withTimeInterval: 2, repeats: false) {(timer) in
+                self.bgSoundPlayer?.stop()
+                
+                let nextLevel = Level2(fileNamed: "Level2")
+                nextLevel?.scaleMode = .aspectFill
+                
+                self.view?.presentScene(nextLevel)
+                self.run(Sound.levelUp.action)
+            }
         }
     }
 }

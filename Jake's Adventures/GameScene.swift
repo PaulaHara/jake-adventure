@@ -49,7 +49,7 @@ class GameScene: SKScene {
     
     // Sprite Engine
     var playerIsFacingRight = true
-    var playerSpeed = 1.0
+    var playerSpeed = 0.5
     
     // Player state
     var playerStateMachine: GKStateMachine!
@@ -82,12 +82,14 @@ class GameScene: SKScene {
         flyMan = childNode(withName: "enemies")
         
         // Animate flyMan
-        let y: CGFloat = (flyMan?.position.y)!;
-        let a = SKAction.moveTo(y: y+50, duration:2.0);
-        let b = SKAction.moveTo(y: y-20, duration:2.0);
-        let c = SKAction.sequence([a, b]);
-        let d = SKAction.repeatForever(c)
-        flyMan?.run(d)
+        if (flyMan != nil) {
+            let y: CGFloat = (flyMan?.position.y)!;
+            let a = SKAction.moveTo(y: y+50, duration:2.0);
+            let b = SKAction.moveTo(y: y-20, duration:2.0);
+            let c = SKAction.sequence([a, b]);
+            let d = SKAction.repeatForever(c)
+            flyMan?.run(d)
+        }
         
         playerStateMachine = GKStateMachine(states: [
             JumpingState(playerNode: player!),
@@ -106,9 +108,9 @@ class GameScene: SKScene {
         fillHearts(count: 3)
         
         // Timer
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) {(timer) in
-            self.spawnMeteor()
-        }
+//        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) {(timer) in
+//            self.spawnMeteor()
+//        }
         
         scoreLabel.position = CGPoint(x: (cameraNode?.position.x)! + 310, y: 140)
         scoreLabel.fontColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
@@ -357,10 +359,10 @@ extension GameScene: SKPhysicsContactDelegate {
             var touchedCoin = false
             var touchedCarrot = false
             
-            if contact.bodyA.node?.name == "Jewel" {
+            if contact.bodyA.node?.name == "coin" {
                 nodeToRemove = contact.bodyA.node!
                 touchedCoin = true
-            } else if contact.bodyB.node?.name == "Jewel" {
+            } else if contact.bodyB.node?.name == "coin" {
                 nodeToRemove = contact.bodyB.node!
                 touchedCoin = true
             }
@@ -389,7 +391,7 @@ extension GameScene: SKPhysicsContactDelegate {
         }
         
         if collision.matches(.player, .nextLevel) {
-            if contact.bodyA.node?.name == "GoNextLevel" || contact.bodyB.node?.name == "GoNextLevel"{
+            if contact.bodyA.node?.name == "carrot" || contact.bodyB.node?.name == "carrot"{
                 goToNextLevel = true
             }
         }
@@ -400,31 +402,31 @@ extension GameScene: SKPhysicsContactDelegate {
     }
 }
 
-// MARK: Meteor
-extension GameScene {
-    func spawnMeteor() {
-        let node = SKSpriteNode(imageNamed: "spikeBall/0")
-        node.name = "spikeBall"
-        
-        node.position = CGPoint(x: (player?.position.x)! + 400, y: 10)
-        node.anchorPoint = CGPoint(x: 0.5, y: 1)
-        node.zPosition = 5
-        node.xScale = 0.3
-        node.yScale = 0.3
-        
-        let physicsBody = SKPhysicsBody(circleOfRadius: 30)
-        node.physicsBody = physicsBody
-        
-        physicsBody.categoryBitMask = Collision.Masks.killing.bitmask
-        physicsBody.collisionBitMask = Collision.Masks.player.bitmask | Collision.Masks.ground.bitmask
-        physicsBody.contactTestBitMask = Collision.Masks.player.bitmask | Collision.Masks.ground.bitmask
-        physicsBody.fieldBitMask = Collision.Masks.player.bitmask | Collision.Masks.ground.bitmask
-        
-        physicsBody.affectedByGravity = false
-        physicsBody.allowsRotation = false
-        physicsBody.restitution = 0.2
-        physicsBody.friction = 10
-        
-        addChild(node)
-    }
-}
+// MARK: Enemies
+//extension GameScene {
+//    func spawnEnemi() {
+//        let node = SKSpriteNode(imageNamed: "spikeBall/0")
+//        node.name = "spikeBall"
+//
+//        node.position = CGPoint(x: (player?.position.x)! + 400, y: 10)
+//        node.anchorPoint = CGPoint(x: 0.5, y: 1)
+//        node.zPosition = 5
+//        node.xScale = 0.3
+//        node.yScale = 0.3
+//
+//        let physicsBody = SKPhysicsBody(circleOfRadius: 30)
+//        node.physicsBody = physicsBody
+//
+//        physicsBody.categoryBitMask = Collision.Masks.killing.bitmask
+//        physicsBody.collisionBitMask = Collision.Masks.player.bitmask | Collision.Masks.ground.bitmask
+//        physicsBody.contactTestBitMask = Collision.Masks.player.bitmask | Collision.Masks.ground.bitmask
+//        physicsBody.fieldBitMask = Collision.Masks.player.bitmask | Collision.Masks.ground.bitmask
+//
+//        physicsBody.affectedByGravity = false
+//        physicsBody.allowsRotation = false
+//        physicsBody.restitution = 0.2
+//        physicsBody.friction = 10
+//
+//        addChild(node)
+//    }
+//}

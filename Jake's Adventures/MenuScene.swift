@@ -19,7 +19,7 @@ class MenuScene: SKScene {
     var bgSoundPlayer:AVAudioPlayer?
     
     override func sceneDidLoad() {
-        bgSoundPlayer = AVAudioPlayer.backgroundMusic
+        bgSoundPlayer = AVAudioPlayer.menuBackgroundMusic
         bgSoundPlayer?.volume = 0.5
         bgSoundPlayer!.numberOfLoops = -1 // loop forever
         bgSoundPlayer!.play() // actually play
@@ -32,7 +32,7 @@ class MenuScene: SKScene {
             let location = touch.location(in: self)
             
             if (start_btn?.contains(location))! {
-                let level1 = GameScene(fileNamed: "Level1")
+                let level1 = Level1(fileNamed: "Level1")
                 self.view?.presentScene(level1)
                 self.removeAllActions()
             }

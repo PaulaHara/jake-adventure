@@ -42,7 +42,7 @@ class JumpingState: PlayerState {
         playerNode.removeAction(forKey: characterAnimationKey)
         playerNode.run(action, withKey: characterAnimationKey)
         hasFinishedJumping = false
-        playerNode.run(.applyForce(CGVector(dx: 0, dy: 200), duration: 0.2))
+        playerNode.run(.applyForce(CGVector(dx: 0, dy: 250), duration: 0.2))
         
         Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) {(timer) in
             self.hasFinishedJumping = true
@@ -127,5 +127,16 @@ class StunnedState: PlayerState {
             self.isStunned = false
             self.stateMachine?.enter(IdleState.self)
         }
+    }
+}
+
+class ChangeLevelState: PlayerState {
+    let textures: Array<SKTexture> = (0...1).map({return "jump/\($0)"}).map(SKTexture.init)
+    lazy var action = {SKAction.animate(with: textures, timePerFrame: 0.2)} ()
+    
+    override func didEnter(from previousState: GKState?) {
+        playerNode.removeAction(forKey: characterAnimationKey)
+        playerNode.run(action, withKey: characterAnimationKey)
+        playerNode.run(.applyForce(CGVector(dx: 0, dy: 250), duration: 0.2))
     }
 }
