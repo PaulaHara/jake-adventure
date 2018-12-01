@@ -8,12 +8,22 @@
 
 import Foundation
 import SpriteKit
+import AVFoundation
 
 class MenuScene: SKScene {
     
+    // Start button
     var start_btn : SKNode?
     
+    // Play background music
+    var bgSoundPlayer:AVAudioPlayer?
+    
     override func sceneDidLoad() {
+        bgSoundPlayer = AVAudioPlayer.backgroundMusic
+        bgSoundPlayer?.volume = 0.5
+        bgSoundPlayer!.numberOfLoops = -1 // loop forever
+        bgSoundPlayer!.play() // actually play
+        
         start_btn = childNode(withName: "start_btn")
     }
     

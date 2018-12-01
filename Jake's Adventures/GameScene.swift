@@ -54,7 +54,8 @@ class GameScene: SKScene {
     // Player state
     var playerStateMachine: GKStateMachine!
     
-    var bgSoundPlayer:AVAudioPlayer? //add this
+    // Play background music
+    var bgSoundPlayer:AVAudioPlayer?
     
     // DidMove
     override func didMove(to view: SKView) {

@@ -27,6 +27,7 @@
 		DA8E6D1521A7AD1800628CE6 /* hitSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0E21A7AD1700628CE6 /* hitSound.wav */; };
 		DA8E6D1621A7AD1800628CE6 /* music.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0F21A7AD1800628CE6 /* music.wav */; };
 		DA8E6D1721A7AD1800628CE6 /* jumpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D1021A7AD1800628CE6 /* jumpSound.wav */; };
+		DAA9A95521B1EE94003B0B4D /* menuMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DAA9A95421B1EE94003B0B4D /* menuMusic.mp3 */; };
 		DADF1FEA21AE2E6C00C19836 /* levelUpSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DADF1FE921AE2E6C00C19836 /* levelUpSound.wav */; };
 		DAF1301421A3423F0057F148 /* PlayerStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */; };
 		DAF2418E21B0CFE80020BBCC /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = DAF2418D21B0CFE80020BBCC /* MenuScene.sks */; };
@@ -58,6 +59,7 @@
 		DA8E6D0E21A7AD1700628CE6 /* hitSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitSound.wav; sourceTree = "<group>"; };
 		DA8E6D0F21A7AD1800628CE6 /* music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music.wav; sourceTree = "<group>"; };
 		DA8E6D1021A7AD1800628CE6 /* jumpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = jumpSound.wav; sourceTree = "<group>"; };
+		DAA9A95421B1EE94003B0B4D /* menuMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menuMusic.mp3; sourceTree = "<group>"; };
 		DADF1FE921AE2E6C00C19836 /* levelUpSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = levelUpSound.wav; sourceTree = "<group>"; };
 		DAF1301321A3423F0057F148 /* PlayerStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerStateMachine.swift; sourceTree = "<group>"; };
 		DAF2418D21B0CFE80020BBCC /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				DA8E6D0F21A7AD1800628CE6 /* music.wav */,
 				DA8E6D0D21A7AD1700628CE6 /* rewardSound.wav */,
 				DA2C73A221B0F5E60083F2A6 /* music.mp3 */,
+				DAA9A95421B1EE94003B0B4D /* menuMusic.mp3 */,
 				DAF2F94F21A8F5FB00429A5F /* Cenarios sem alfa */,
 				DAFA510421AE504A00BB61BC /* Credits.swift */,
 			);
@@ -204,6 +207,7 @@
 				DA1F0DFA219FC35600B15728 /* LaunchScreen.storyboard in Resources */,
 				DA8E6D1521A7AD1800628CE6 /* hitSound.wav in Resources */,
 				DA1F0DEE219FC34300B15728 /* Actions.sks in Resources */,
+				DAA9A95521B1EE94003B0B4D /* menuMusic.mp3 in Resources */,
 				DAF2418E21B0CFE80020BBCC /* MenuScene.sks in Resources */,
 				DA8E6D1621A7AD1800628CE6 /* music.wav in Resources */,
 			);

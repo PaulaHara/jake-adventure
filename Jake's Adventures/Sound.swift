@@ -19,13 +19,21 @@ enum Sound: String {
 }
 
 extension AVAudioPlayer {
-    static var backgroundMusic: AVAudioPlayer? {
-        let fileURL: URL = Bundle.main.url(forResource:"music", withExtension: "mp3")!
-        
+    static fileprivate func getAVAudioPlayer(musicName: String, musicExtension: String) -> AVAudioPlayer? {
+        let fileURL: URL = Bundle.main.url(forResource: musicName, withExtension: musicExtension)!
+    
         do {
             return try AVAudioPlayer(contentsOf: fileURL)
         } catch {
             return nil
         }
+    }
+    
+    static var backgroundMusic: AVAudioPlayer? {
+        return getAVAudioPlayer(musicName: "music", musicExtension: "mp3")
+    }
+    
+    static var menuBackgroundMusic: AVAudioPlayer? {
+        return getAVAudioPlayer(musicName: "menuMusic", musicExtension: "mp3")
     }
 }
