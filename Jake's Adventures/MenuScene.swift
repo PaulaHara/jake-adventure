@@ -32,7 +32,7 @@ class MenuScene: SKScene {
             let location = touch.location(in: self)
             
             if (start_btn?.contains(location))! {
-                let level1 = Level1(fileNamed: "Level1")
+                let level1 = Level2(fileNamed: "Level2")
                 self.view?.presentScene(level1)
                 self.removeAllActions()
             }

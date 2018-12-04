@@ -26,7 +26,7 @@ class GameScene: SKScene {
     var backgroundNode : SKNode?
     var goNextLevel : SKNode?
     var outOfMap : SKNode?
-    var flyMan : SKNode?
+//    var flyMan : SKNode?
     
     // Boolean
     var joystickAction = false
@@ -79,17 +79,17 @@ class GameScene: SKScene {
         backgroundNode = childNode(withName: "backgroundNode")
         goNextLevel = childNode(withName: "GoNextLevel")
         outOfMap = childNode(withName: "killingGround")
-        flyMan = childNode(withName: "enemies")
-        
-        // Animate flyMan
-        if (flyMan != nil) {
-            let y: CGFloat = (flyMan?.position.y)!;
-            let a = SKAction.moveTo(y: y+50, duration:2.0);
-            let b = SKAction.moveTo(y: y-20, duration:2.0);
-            let c = SKAction.sequence([a, b]);
-            let d = SKAction.repeatForever(c)
-            flyMan?.run(d)
-        }
+//        flyMan = childNode(withName: "enemies")
+//
+//        // Animate flyMan
+//        if (flyMan != nil) {
+//            let y: CGFloat = (flyMan?.position.y)!;
+//            let a = SKAction.moveTo(y: y+50, duration:2.0);
+//            let b = SKAction.moveTo(y: y-20, duration:2.0);
+//            let c = SKAction.sequence([a, b]);
+//            let d = SKAction.repeatForever(c)
+//            flyMan?.run(d)
+//        }
         
         playerStateMachine = GKStateMachine(states: [
             JumpingState(playerNode: player!),

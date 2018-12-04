@@ -10,6 +10,9 @@ import Foundation
 import SpriteKit
 
 class Level2: GameScene {
+    
+    var spikeBall : SKNode?
+    
     override func didMove(to view: SKView) {
         super.didMove(to: view)
     }
@@ -28,5 +31,15 @@ class Level2: GameScene {
     
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
+        
+        spikeBall = childNode(withName: "spikeBalls")
+        
+        // Animate spikeBall
+        let y: CGFloat = (spikeBall?.position.y)!;
+        let a = SKAction.moveTo(y: y+50, duration:1.0);
+        let b = SKAction.moveTo(y: y-30, duration:1.0);
+        let c = SKAction.sequence([a, b]);
+        let d = SKAction.repeatForever(c)
+        spikeBall?.run(d)
     }
 }
