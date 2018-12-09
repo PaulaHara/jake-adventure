@@ -37,11 +37,13 @@ class Level1: GameScene {
         
         // Animate flyMan
         let y: CGFloat = (flyMan?.position.y)!;
-        let a = SKAction.moveTo(y: y+50, duration:2.0);
-        let b = SKAction.moveTo(y: y-20, duration:2.0);
-        let c = SKAction.sequence([a, b]);
-        let d = SKAction.repeatForever(c)
-        flyMan?.run(d)
+        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) {(timer) in
+            let a = SKAction.moveTo(y: y+50, duration:1.0);
+            let b = SKAction.moveTo(y: y-20, duration:1.0);
+            let c = SKAction.sequence([a, b]);
+            let d = SKAction.repeatForever(c)
+            self.flyMan?.run(d)
+        }
         
         if goToNextLevel {
             let action = SKAction.moveTo(x: (player?.position.x)!, duration: 0.0)
