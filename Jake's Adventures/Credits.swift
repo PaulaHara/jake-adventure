@@ -8,4 +8,6 @@
 
 import Foundation
 
-// Images: https://kenney.nl/assets/foliage-pack
+// Images: https://kenney.nl
+// Jake: Created and animated by me (Paula Hara)
+// music: 

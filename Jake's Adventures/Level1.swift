@@ -12,7 +12,7 @@ import AVFoundation
 
 class Level1: GameScene {
     
-    var flyMan : SKNode?
+//    var flyMan : SKNode?
     
     override func didMove(to view: SKView) {
         super.didMove(to: view)
@@ -33,17 +33,16 @@ class Level1: GameScene {
     override func update(_ currentTime: TimeInterval) {
         super.update(currentTime)
         
-        flyMan = childNode(withName: "enemies")
+//        flyMan = childNode(withName: "enemies")
+//        
+//        // Animate flyMan
+//        let y: CGFloat = (flyMan?.position.y)!;
+//        let a = SKAction.moveTo(y: y+50, duration:1.0);
+//        let b = SKAction.moveTo(y: y-20, duration:1.0);
+//        let c = SKAction.sequence([a, b]);
+//        let d = SKAction.repeatForever(c)
+//        self.flyMan?.run(d)
         
-        // Animate flyMan
-        let y: CGFloat = (flyMan?.position.y)!;
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false) {(timer) in
-            let a = SKAction.moveTo(y: y+50, duration:1.0);
-            let b = SKAction.moveTo(y: y-20, duration:1.0);
-            let c = SKAction.sequence([a, b]);
-            let d = SKAction.repeatForever(c)
-            self.flyMan?.run(d)
-        }
         
         if goToNextLevel {
             let action = SKAction.moveTo(x: (player?.position.x)!, duration: 0.0)

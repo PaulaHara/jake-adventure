@@ -22,7 +22,6 @@
 		DA8180B221A3BED200D0FAFB /* Level2.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8180B121A3BED200D0FAFB /* Level2.swift */; };
 		DA8180B421A3BEF100D0FAFB /* Level2.sks in Resources */ = {isa = PBXBuildFile; fileRef = DA8180B321A3BEF100D0FAFB /* Level2.sks */; };
 		DA8180B621A3C79D00D0FAFB /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8180B521A3C79D00D0FAFB /* Sound.swift */; };
-		DA8E6D1321A7AD1800628CE6 /* meteorFallingSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0C21A7AD1700628CE6 /* meteorFallingSound.wav */; };
 		DA8E6D1421A7AD1800628CE6 /* rewardSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0D21A7AD1700628CE6 /* rewardSound.wav */; };
 		DA8E6D1521A7AD1800628CE6 /* hitSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0E21A7AD1700628CE6 /* hitSound.wav */; };
 		DA8E6D1621A7AD1800628CE6 /* music.wav in Resources */ = {isa = PBXBuildFile; fileRef = DA8E6D0F21A7AD1800628CE6 /* music.wav */; };
@@ -54,7 +53,6 @@
 		DA8180B121A3BED200D0FAFB /* Level2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level2.swift; sourceTree = "<group>"; };
 		DA8180B321A3BEF100D0FAFB /* Level2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Level2.sks; sourceTree = "<group>"; };
 		DA8180B521A3C79D00D0FAFB /* Sound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
-		DA8E6D0C21A7AD1700628CE6 /* meteorFallingSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = meteorFallingSound.wav; sourceTree = "<group>"; };
 		DA8E6D0D21A7AD1700628CE6 /* rewardSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = rewardSound.wav; sourceTree = "<group>"; };
 		DA8E6D0E21A7AD1700628CE6 /* hitSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitSound.wav; sourceTree = "<group>"; };
 		DA8E6D0F21A7AD1800628CE6 /* music.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = music.wav; sourceTree = "<group>"; };
@@ -119,7 +117,6 @@
 				DA8E6D0E21A7AD1700628CE6 /* hitSound.wav */,
 				DA8E6D1021A7AD1800628CE6 /* jumpSound.wav */,
 				DADF1FE921AE2E6C00C19836 /* levelUpSound.wav */,
-				DA8E6D0C21A7AD1700628CE6 /* meteorFallingSound.wav */,
 				DA8E6D0F21A7AD1800628CE6 /* music.wav */,
 				DA8E6D0D21A7AD1700628CE6 /* rewardSound.wav */,
 				DA2C73A221B0F5E60083F2A6 /* music.mp3 */,
@@ -202,7 +199,6 @@
 				DA2C73A321B0F5E60083F2A6 /* music.mp3 in Resources */,
 				DA8180B421A3BEF100D0FAFB /* Level2.sks in Resources */,
 				DA1F0DF7219FC35600B15728 /* Assets.xcassets in Resources */,
-				DA8E6D1321A7AD1800628CE6 /* meteorFallingSound.wav in Resources */,
 				DA8E6D1421A7AD1800628CE6 /* rewardSound.wav in Resources */,
 				DA1F0DFA219FC35600B15728 /* LaunchScreen.storyboard in Resources */,
 				DA8E6D1521A7AD1800628CE6 /* hitSound.wav in Resources */,
